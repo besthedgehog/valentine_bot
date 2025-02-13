@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  valentine-bot:
+    build: .
+    image: valentine-bot
+    container_name: valentine-bot
+    restart: unless-stopped
+    volumes:
+      - ./valentines.db:/app/valentines.db
+      - ./.env:/app/.env
+    networks:
+      - valentine-network
+
+
+networks:
+  valentine-network:
+    driver: bridge
